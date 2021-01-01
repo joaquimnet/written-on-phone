@@ -11,14 +11,25 @@ const ask = (question) => {
     });
 
     rl.question('> ', (answer) => {
-      // TODO: Log the answer in a database
       resolve(answer);
       rl.close();
     });
   });
 };
 
-module.exports = {
-  ask,
+const picker = (question, options) => {
+  return new Promise((resolve) => {
+    log.info(question);
+    for (let i; i < options.length; i++) {
+      log.info(i + 1 + '. ' + options[i]);
+    }
+    ask('').then((answer) => {
+      resolve(options[Number(answer)]);
+    });
+  });
 };
 
+module.exports = {
+  ask,
+  picker,
+};
