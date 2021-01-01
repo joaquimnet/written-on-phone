@@ -18,7 +18,7 @@ const ask = (question) => {
   });
 };
 
-(async () => {
-  const res = await ask('Type something.');
-  log.info(res);
-})();
+module.exports = {
+  ask,
+};
+
